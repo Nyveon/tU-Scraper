@@ -4,6 +4,9 @@ from cursos import Ramo
 import requests
 import json
 
+
+
+## -- Catalogo de cursos --
 # Setup
 catalogo = "fcfm_catalogo"
 semestre = 20221
@@ -20,6 +23,18 @@ soup_ramos = soup.find_all("div", class_="ramo")
 for soup_ramo in soup_ramos:
     ramos.append(Ramo(soup_ramo))
 
-print(ramos)
+# Output
+ramos_json = []
 for ramo in ramos:
-    print(ramo.to_json())
+    ramos_json.append(ramo.to_json())
+
+with open("ramos.json", "w") as output_file:
+    output_file.write(
+        json.dumps(
+            ramos_json,
+            ensure_ascii=False
+        )
+    )
+
+
+# todo: recuento de creditos

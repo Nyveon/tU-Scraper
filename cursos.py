@@ -51,8 +51,7 @@ class Ramo:
         return cursos_jsons
 
     def to_json(self):
-        return json.dumps(
-            {
+        return {
                 "codigo": self.codigo,
                 "nombre": self.nombre,
                 "numero_cursos": len(self.cursos),
@@ -60,9 +59,7 @@ class Ramo:
                 "creditos": self.creditos,
                 "requsitos": self.requisitos,
                 "equivalencias": self.equivalencias
-            },
-            ensure_ascii=False
-        )
+                }
 
 
 class Curso:
